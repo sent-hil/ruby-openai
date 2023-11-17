@@ -9,7 +9,7 @@ module OpenAI
     end
 
     def upload(parameters: {})
-      validate(file: parameters[:file])
+      validate(file: parameters[:file]) if parameters[:purpose] == "fine-tune"
 
       @client.multipart_post(
         path: "/files",
